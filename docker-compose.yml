@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0     # 使用MySQL 8.0镜像
+    container_name: tiny-vote-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: vote
+      MYSQL_DATABASE: Vote
+      MYSQL_PASSWORD: vote
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  redis:
+    image: redis:7-alpine
+    container_name: tiny-vote-redis
+    command: redis-server --requirepass ""
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: ""
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+  
+volumes:
+  mysql-data:
+  redis-data:
