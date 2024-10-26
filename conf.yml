@@ -1,6 +1,6 @@
 server:
   listenOn: 8088 # 服务监听端口
-  interval: 50 # 生成 ticket 时间间隔
+  interval: 2 # 生成 ticket 时间间隔
   maxTicketUsage: 10 # 每个 ticket 的最大使用次数
 mysql:
   dbURL: root:vote@tcp(127.0.0.1:3306)/Vote?charset=utf8mb4&parseTime=True&loc=Local
